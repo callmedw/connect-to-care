@@ -1,8 +1,8 @@
 var Searchdoc =  require('./../js/connect-to-care.js').searchdocModule;
 
 var displayTotal = function(total) {
-  $('.result-total').append(`${total}`)
-}
+  $('.result-total').append(`${total}`);
+};
 
 var makeRow = function() {
   $('#table-body').append(`<tr></tr>`);
@@ -40,6 +40,7 @@ var displayTitle = function(title){
 $(document).ready(function() {
   $('#input-submit').click(function() {
     $('#search-result').show();
+    $('table').show();
     var search = new Searchdoc();
     var ailmentQuery = $('#specialty').val();
     $('#specialty').val("");
