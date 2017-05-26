@@ -39,6 +39,7 @@ var displayTitle = function(title){
 
 $(document).ready(function() {
   $('#input-submit').click(function() {
+    $('#search-result').show();
     var search = new Searchdoc();
     var ailmentQuery = $('#specialty').val();
     $('#specialty').val("");
