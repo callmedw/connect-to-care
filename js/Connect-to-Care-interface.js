@@ -28,6 +28,22 @@ var displayTitle = function(title){
   $('td').last().append(`${title}`);
 };
 
+var makeSecondColumn = function() {
+  $('tr').append(`<td></td>`);
+};
+
+var displayPhone = function(phone){
+  $('td').last().append(`${phone}`);
+};
+
+var makeThirdColumn = function() {
+  $('tr').append(`<td></td>`);
+};
+
+var displaySpecialty = function(specialty){
+  $('td').last().append(`${specialty}`);
+};
+
 // var displayDescription = function(description){
 //   $('tr').last().append(`<td>${description}</td>`);
 // };
@@ -44,6 +60,6 @@ $(document).ready(function() {
     var search = new Searchdoc();
     var ailmentQuery = $('#specialty').val();
     $('#specialty').val("");
-    search.getSearchDocData(ailmentQuery, makeRow, makefirstColumn, displayTotal, displayFirstName, displayMiddleName, displayLastName, displayTitle);
+    search.getSearchDocData(ailmentQuery, makeRow, makefirstColumn, displayTotal, displayFirstName, displayMiddleName, displayLastName, displayTitle, makeSecondColumn, displayPhone, makeThirdColumn, displaySpecialty);
   });
 });
