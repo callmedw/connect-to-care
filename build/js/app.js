@@ -7,7 +7,7 @@ var apiKey = require('./../.env').apiKey;
 Searchdoc = function(){
 };
 
-Searchdoc.prototype.getSearchDocData = function(ailmentQuery, makeRow, makefirstColumn, displayFirstName, displayMiddleName, displayLastName) {
+Searchdoc.prototype.getSearchDocData = function(ailmentQuery, makeRow, makefirstColumn, displayFirstName, displayMiddleName, displayLastName, displayTitle) {
   $.get('https://api.betterdoctor.com/2016-03-01/doctors?query=' + ailmentQuery + '&location=45.523%2C-122.676%2C100&user_location=45.523%2C-122.676&skip=0&limit=10&user_key=' + apiKey).then(function(response) {
     response.data.forEach(function(data){
       makeRow();
@@ -15,7 +15,7 @@ Searchdoc.prototype.getSearchDocData = function(ailmentQuery, makeRow, makefirst
       displayFirstName(data.profile.first_name);
       displayMiddleName(data.profile.middle_name);
       displayLastName(data.profile.last_name);
-      // displayTitle(data.profile.title);
+      displayTitle(data.profile.title);
 
     console.log(response.data.length);
     });
@@ -69,7 +69,11 @@ var displayMiddleName = function(middleName){
 };
 
 var displayLastName = function(lastName){
-  $('td').last().append(`${lastName}`);
+  $('td').last().append(`${lastName}` + `, `);
+};
+
+var displayTitle = function(title){
+  $('td').last().append(`${title}`);
 };
 
 // var displayDescription = function(description){
@@ -117,7 +121,7 @@ $(document).ready(function() {
     var search = new Searchdoc();
     var ailmentQuery = $('#specialty').val();
     $('#specialty').val("");
-    search.getSearchDocData(ailmentQuery, makeRow, makefirstColumn, displayFirstName, displayMiddleName, displayLastName);
+    search.getSearchDocData(ailmentQuery, makeRow, makefirstColumn, displayFirstName, displayMiddleName, displayLastName, displayTitle);
   });
 });
 

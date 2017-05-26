@@ -17,7 +17,11 @@ var displayMiddleName = function(middleName){
 };
 
 var displayLastName = function(lastName){
-  $('td').last().append(`${lastName}`);
+  $('td').last().append(`${lastName}` + `, `);
+};
+
+var displayTitle = function(title){
+  $('td').last().append(`${title}`);
 };
 
 // var displayDescription = function(description){
@@ -65,7 +69,7 @@ $(document).ready(function() {
     var search = new Searchdoc();
     var ailmentQuery = $('#specialty').val();
     $('#specialty').val("");
-    search.getSearchDocData(ailmentQuery, makeRow, makefirstColumn, displayFirstName, displayMiddleName, displayLastName);
+    search.getSearchDocData(ailmentQuery, makeRow, makefirstColumn, displayFirstName, displayMiddleName, displayLastName, displayTitle);
   });
 });
 
